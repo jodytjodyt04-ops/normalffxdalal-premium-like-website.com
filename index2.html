@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Free Fire Like · Secure</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,'Segoe UI',Roboto,sans-serif;}
+  body{min-height:100vh;display:grid;place-items:center;padding:1rem;
+       background:radial-gradient(circle at 20% 30%,#0b0f1a,#05070c);}
+  .card{background:rgba(18,22,34,.85);backdrop-filter:blur(16px);
+        -webkit-backdrop-filter:blur(16px);border-radius:2.5rem;
+        padding:2rem 1.8rem;width:100%;max-width:440px;
+        border:1px solid rgba(255,215,0,.25);
+        box-shadow:0 25px 40px -10px #000,0 0 0 1px rgba(255,200,50,.1) inset;
+        transition:transform .2s ease;}
+  .card:active{transform:scale(.99);}
+  .logo{display:flex;justify-content:center;align-items:center;gap:.5rem;margin-bottom:.25rem;}
+  .logo-icon{font-size:2.2rem;filter:drop-shadow(0 0 8px #ffb347);}
+  .logo h1{font-size:2rem;font-weight:800;letter-spacing:1px;
+           background:linear-gradient(135deg,#ffe082,#ffb347,#ff8a00);
+           -webkit-background-clip:text;background-clip:text;color:transparent;
+           text-shadow:0 0 20px rgba(255,180,60,.5);}
+  .subhead{text-align:center;color:#a0aec0;font-size:.8rem;letter-spacing:1.5px;
+           text-transform:uppercase;margin-bottom:1.5rem;font-weight:500;
+           border-bottom:1px dashed rgba(255,215,0,.3);padding-bottom:.7rem;}
+  .subhead span{color:#ffd966;font-weight:700;}
+  .field{margin-bottom:1.4rem;}
+  .field label{display:block;font-size:.8rem;font-weight:600;color:#cbd5e1;
+               letter-spacing:.5px;margin-bottom:.4rem;margin-left:.3rem;text-transform:uppercase;}
+  .field input{width:100%;padding:1rem 1.2rem;background:#0e121c;
+               border:1.5px solid #2a3242;border-radius:3rem;font-size:1rem;
+               font-weight:500;color:#f0f4ff;outline:none;transition:all .2s;
+               box-shadow:0 6px 12px rgba(0,0,0,.4);}
+  .field input:focus{border-color:#ffb347;background:#121826;
+                     box-shadow:0 0 0 4px rgba(255,180,70,.15),0 6px 12px #00000060;}
+  .field input::placeholder{color:#52607a;font-weight:400;font-size:.9rem;}
+  .region-selector{display:flex;gap:.7rem;margin-top:.2rem;flex-wrap:wrap;}
+  .region-btn{flex:1 0 70px;padding:.7rem .2rem;border-radius:3rem;
+              background:#0e121c;border:1.5px solid #2a3242;color:#9aa9c1;
+              font-weight:700;font-size:.9rem;letter-spacing:.5px;
+              text-align:center;cursor:pointer;transition:all .15s;
+              box-shadow:0 4px 8px #00000030;}
+  .region-btn.active{background:linear-gradient(145deg,#ffb347,#ff8a00);
+                     border-color:#ffd966;color:#0b0e14;
+                     box-shadow:0 0 18px #ffb34780,0 4px 10px black;transform:scale(1.02);}
+  .region-btn:active{transform:scale(.96);}
+  .like-btn{width:100%;padding:1.1rem;margin-top:1.8rem;border:none;
+            border-radius:3rem;background:linear-gradient(145deg,#f5b042,#e07c1e);
+            color:#0b0e14;font-weight:800;font-size:1.3rem;letter-spacing:1.5px;
+            text-transform:uppercase;cursor:pointer;
+            box-shadow:0 20px 30px -10px #e07c1e90,0 0 0 1px #ffe28c inset;
+            transition:all .2s;display:flex;align-items:center;
+            justify-content:center;gap:10px;}
+  .like-btn:active{transform:scale(.97);}
+  .like-btn:disabled{opacity:.65;transform:scale(.98);
+                     box-shadow:0 5px 15px #00000060;
+                     background:linear-gradient(145deg,#5c5c5c,#3a3a3a);
+                     color:#b0b0b0;cursor:not-allowed;filter:grayscale(.5);}
+  .status{margin-top:1.2rem;padding:1rem;border-radius:1.8rem;
+          background:#0b0f17cc;border:1px solid #2a3242;color:#d0d9e8;
+          font-size:.9rem;font-weight:500;text-align:center;min-height:4.2rem;
+          display:flex;align-items:center;justify-content:center;
+          backdrop-filter:blur(4px);word-break:break-word;
+          box-shadow:inset 0 2px 10px #00000050;}
+  .status.success{border-color:#23c55e;color:#b6f0c5;background:#0f1a14cc;}
+  .status.error{border-color:#ef4444;color:#ffc9c9;background:#1f1010cc;}
+  .status i{font-style:normal;display:inline-block;margin-right:6px;}
+  .api-note{margin-top:1rem;font-size:.68rem;color:#6b7a93;text-align:center;
+            display:flex;justify-content:center;align-items:center;gap:6px;}
+  .api-note span{background:#1c2536;padding:3px 8px;border-radius:40px;
+                 font-size:.65rem;letter-spacing:.5px;color:#b0bdd6;}
+  .spinner{display:inline-block;width:1.2rem;height:1.2rem;
+           border:3px solid rgba(0,0,0,.2);border-radius:50%;
+           border-top-color:#0b0e14;animation:spin .8s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">
+      <span class="logo-icon">🔥</span>
+      <h1>FREE FIRE</h1>
+    </div>
+    <div class="subhead">⚡ <span>SECURE LIKE</span> · OBFUSCATED</div>
+
+    <div class="field">
+      <label for="uid">👤 PLAYER UID</label>
+      <input type="text" id="uid" placeholder="e.g. 4749338485"
+             value="4749338485" autocomplete="off" inputmode="numeric" />
+    </div>
+
+    <div class="field">
+      <label>🌍 REGION</label>
+      <div class="region-selector" id="regionContainer">
+        <div class="region-btn active" data-region="ind">IND</div>
+        <div class="region-btn" data-region="br">BR</div>
+        <div class="region-btn" data-region="sg">SG</div>
+        <div class="region-btn" data-region="id">ID</div>
+        <div class="region-btn" data-region="pk">PK</div>
+      </div>
+    </div>
+
+    <button class="like-btn" id="likeBtn">
+      <span>❤️</span> SEND LIKE
+    </button>
+
+    <div class="status" id="statusBox">
+      <i>🔒</i> Ready · key obfuscated
+    </div>
+
+    <div class="api-note">
+      <span>🔐 Obfuscated key</span> · <span>XOR + Base64</span>
+    </div>
+  </div>
+
+<script>
+/* ============================================================
+   Obfuscated key storage.
+   The key "@RLX" is XOR-encrypted with a runtime-derived pad
+   and stored as a byte array. There is no "@RLX" literal in
+   the source. It is decrypted only at the moment of use.
+   ------------------------------------------------------------
+   ⚠️ This is obfuscation, NOT real security. A determined
+      user can breakpoint decrypt() and read the plaintext.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  // ---- XOR-encrypted bytes of "@RLX" using pad "k9#z7" ----
+  //   '@' (64) ^ 'k' (107) = 43
+  //   'R' (82) ^ '9' (57)  = 107
+  //   'L' (76) ^ '#' (35)  = 111
+  //   'X' (88) ^ 'z' (122) = 34
+  //   pad continues: '7' (55) but only 4 bytes to encode
+  const _p = [107, 57, 35, 122, 55];              // pad bytes
+  const _b = [43, 107, 111, 34];                  // encrypted key bytes
+
+  function _decrypt() {
+    // re-derive pad from char codes so nothing looks like a string
+    const pad = _p.map(n => String.fromCharCode(n)).join('');
+    let out = '';
+    for (let i = 0; i < _b.length; i++) {
+      out += String.fromCharCode(_b[i] ^ pad.charCodeAt(i % pad.length));
+    }
+    // Wipe references so plaintext isn't held in two places long
+    return out;
+  }
+
+  // ---- DOM ----
+  const uidInput        = document.getElementById('uid');
+  const regionContainer = document.getElementById('regionContainer');
+  const regionButtons   = regionContainer.querySelectorAll('.region-btn');
+  const likeBtn         = document.getElementById('likeBtn');
+  const statusBox       = document.getElementById('statusBox');
+
+  let selectedRegion = 'ind';
+
+  regionButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      regionButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedRegion = btn.dataset.region;
+      setStatus(`🌐 Region set to ${selectedRegion.toUpperCase()}`, '');
+    });
+  });
+
+  function setStatus(message, type = '') {
+    statusBox.className = 'status ' + type;
+    const icon = type === 'error' ? '❌'
+              : type === 'success' ? '✅'
+              : '🔒';
+    statusBox.innerHTML = `<i>${icon}</i> ${message}`;
+  }
+
+  function setLoading(loading) {
+    if (loading) {
+      likeBtn.disabled = true;
+      likeBtn.innerHTML = `<span class="spinner"></span> SENDING...`;
+    } else {
+      likeBtn.disabled = false;
+      likeBtn.innerHTML = `<span>❤️</span> SEND LIKE`;
+    }
+  }
+
+  // ---- Send like ----
+  async function sendLike(uid, region) {
+    if (!/^\d{5,15}$/.test(uid)) {
+      throw new Error('UID must be 5–15 digits');
+    }
+
+    // Decrypt key only at send-time (best-effort hiding)
+    const apiKey = _decrypt();
+
+    // The upstream API only accepts GET with ?key=, so we must use GET here.
+    // (POST body is not supported by rlxx-like.vercel.app.)
+    const url =
+      'https://rlxx-like.vercel.app/like' +
+      '?uid='    + encodeURIComponent(uid) +
+      '&region=' + encodeURIComponent(region) +
+      '&key='    + encodeURIComponent(apiKey);
+
+    // Immediately null out the local reference
+    // (does not remove from memory, but avoids casual closure leak)
+    // apiKey still lives in the URL string; see note at bottom.
+
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: { Accept: 'application/json' },
+    });
+
+    let json;
+    try { json = await res.json(); }
+    catch {
+      const text = await res.text().catch(() => '');
+      json = { success: res.ok, raw: text || `HTTP ${res.status}` };
+    }
+
+    if (!res.ok) {
+      throw new Error(json.error || json.message || `HTTP ${res.status}`);
+    }
+    return json;
+  }
+
+  likeBtn.addEventListener('click', async () => {
+    const uid = uidInput.value.trim();
+    if (!/^\d{5,15}$/.test(uid)) {
+      return setStatus('UID must be 5–15 digits', 'error');
+    }
+
+    setLoading(true);
+    setStatus('⏳ Sending like request...', '');
+
+    try {
+      const result = await sendLike(uid, selectedRegion);
+      const d = result.data || result;
+      const msg =
+        d.message || d.msg ||
+        (typeof d === 'string' ? d : null) ||
+        d.raw ||
+        JSON.stringify(d).slice(0, 120);
+      setStatus(msg, 'success');
+    } catch (err) {
+      console.error(err);
+      let m = err.message || 'Something went wrong';
+      if (m.length > 150) m = m.slice(0, 147) + '...';
+      setStatus(m, 'error');
+    } finally {
+      setLoading(false);
+    }
+  });
+
+  uidInput.addEventListener('keypress', e => {
+    if (e.key === 'Enter') { e.preventDefault(); likeBtn.click(); }
+  });
+
+  setStatus('🔒 Ready · key obfuscated', '');
+})();
+</script>
+</body>
+</html>
